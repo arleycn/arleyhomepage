@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "/sw.js",
+      "source": "/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
