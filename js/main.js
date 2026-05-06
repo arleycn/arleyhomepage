@@ -108,3 +108,36 @@ class Rail {
 window.$ = (selector) => {
   return Rail.getInstance(selector);
 };
+
+
+(function addLinkNames() {
+    const linksConfig = [
+        { name: '博客', defaultTitle: 'Arley 博客' },
+        { name: '云盘', defaultTitle: 'Arley 云盘' },
+        { name: '书签', defaultTitle: 'Arley 书签' },
+        { name: '社区', defaultTitle: 'Arley 社区' },
+        { name: '邮箱', defaultTitle: '发送邮件' }
+    ];
+    
+    const listItems = document.querySelectorAll('ul li');
+    listItems.forEach((item, index) => {
+        if (index >= linksConfig.length) return;
+        const config = linksConfig[index];
+        const link = item.querySelector('a');
+        const img = item.querySelector('img');
+        
+        // 添加下方名称 span
+        const nameSpan = document.createElement('span');
+        nameSpan.className = 'link-name';
+        nameSpan.textContent = config.name;
+        item.appendChild(nameSpan);
+        
+        // 添加 title 属性，触碰/悬停时显示名称
+        if (link) {
+            link.setAttribute('title', config.defaultTitle);
+        }
+        if (img) {
+            img.setAttribute('title', config.defaultTitle);
+        }
+    });
+})();
